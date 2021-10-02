@@ -24,7 +24,7 @@ public class Login {
 
     }
 
-    @Test(priority = 1, dataProvider = "Creds_Data", description = "Check Login functionality", enabled = false)
+    @Test(priority = 1, dataProvider = "Creds_Data", description = "Check Login functionality")
     public void login(String uid, String pass){
 
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.uid)).sendKeys(uid);
