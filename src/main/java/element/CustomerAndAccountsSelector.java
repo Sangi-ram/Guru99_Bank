@@ -44,11 +44,13 @@ public class CustomerAndAccountsSelector {
     public String mini_stmt_btn = "/html/body/div[3]/div/ul/li[13]/a";
     public String macc_no_inp = "/html/body/table/tbody/tr/td/table/tbody/tr[6]/td[2]/input";
     public String msubmit = "/html/body/table/tbody/tr/td/table/tbody/tr[11]/td[2]/input[1]";
+    public String miniStatementAssert = "//p[@class=\"heading3\"]";
 
     //BALANCE ENQUIRY
     public String bal_enquiry_btn = "/html/body/div[3]/div/ul/li[12]/a";
     public String bal_acc_no_inp = "/html/body/table/tbody/tr/td/table/tbody/tr[6]/td[2]/input";
     public String bal_submit = "/html/body/table/tbody/tr/td/table/tbody/tr[11]/td[2]/input[1]";
+    public String balanceAssert = "//p[@class=\"heading3\"]";
 
     //CUSTOM STATEMENT
     public String custom_stmt_btn = "/html/body/div[3]/div/ul/li[14]/a";
@@ -58,6 +60,7 @@ public class CustomerAndAccountsSelector {
     public String min_trans = "/html/body/table/tbody/tr/td/table/tbody/tr[9]/td[2]/input";
     public String noOfTrans = "/html/body/table/tbody/tr/td/table/tbody/tr[10]/td[2]/input";
     public String custom_submit = "/html/body/table/tbody/tr/td/table/tbody/tr[13]/td[2]/input[1]";
+    public String customTransactionAssert = "//p[@class=\"heading3\"]";
 
     //DELETE CUSTOMER
     public String delete_customer_btn = "//a[@href=\"DeleteCustomerInput.php\"]";

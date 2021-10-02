@@ -19,4 +19,12 @@ public class FundTransferSelectors {
     public String depositSubmitBtn = "//input[@name=\"AccSubmit\"]";
     public String depositAssert = "//p[@class=\"heading3\"]";
 
+    public String withdrawBtn = "//a[@href=\"WithdrawalInput.php\"]";
+    public String withdrawAccountNo = "//input[@name=\"accountno\"]";
+    public String withdrawAmount = "//input[@name=\"ammount\"]";
+    public String withdrawDescription = "//input[@name=\"desc\"]";
+    public String withdrawSubmitBtn = "//input[@name=\"AccSubmit\"]";
+    public String withdrawAssert = "//*[@id=\"withdraw\"]/tbody/tr[16]/td[2]";
+
+
 }

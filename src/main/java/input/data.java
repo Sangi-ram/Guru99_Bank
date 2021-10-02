@@ -6,7 +6,7 @@ public class data {
 
     //CUSTOMER DETAILS
     public String customer_name = "Virendra";
-    public String dob = "11\t04\t2013";
+    public String dob = "1104\t2013";
     public String address = "Jamnagar";
     public String city = "Jamnagar";
     public String state = "Gujarat";
@@ -38,7 +38,7 @@ public class data {
     public String fundTransferAmount = "100";
     public String fundDescription = "This is a fund Description";
     public String wrongAccount = "108374838";
-    public String lowBalance = "9999999999999";
+    public String lowBalance = "98338";
 
 
 }

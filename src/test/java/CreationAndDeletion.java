@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.util.Objects;
 
-public class CustomerAndAccounts {
+public class CreationAndDeletion {
 
     data data = new data();
     CustomerAndAccountsSelector CustomerAndAccountsSelector = new CustomerAndAccountsSelector();
@@ -46,8 +46,15 @@ public class CustomerAndAccounts {
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.iphone)).sendKeys(data.phone);
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.ie_mail)).sendKeys(data.e_mail);//CHANGE THIS VALUE BEFORE EVERY EXECUTION
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.icust_passwd)).sendKeys(data.customer_passwd);
-        brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.icust_submit)).click();
-        //ASSERT
+        try {
+            brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.icust_submit)).click();
+            //ASSERT
+        }
+        catch (UnhandledAlertException eAlert){
+
+            Add_New_Customer();
+
+        }
         Assert.assertTrue(brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.ocust_id)).isDisplayed());
         String new_customer_id = brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.ocust_id)).getText();
         System.out.println("New Customer ID :: " + new_customer_id);
@@ -81,7 +88,7 @@ public class CustomerAndAccounts {
     }
 
     @Test(priority =4, description ="Add new Account Existing Customer")
-    public void Add_New_Account_For_Existing_Customer() {
+    public void AddNewAccountForExistingCustomer() {
         //LOGIN
 //        Utility.LoginFn(brw.driver);
 
@@ -106,7 +113,7 @@ public class CustomerAndAccounts {
     }
 
     @Test(priority = 5, description ="Delete Existing Account and Observe The Effect")
-    public void Delete_Existing_Account() {
+    public void deleteExistingAccount() {
 
         //LOGIN
 //        Utility.LoginFn(brw.driver);
@@ -145,7 +152,7 @@ public class CustomerAndAccounts {
         deletedAccountMiniStmtAlert.accept();
     }
 
-    @Test(priority = 7, description ="Check Account Balance")
+    @Test(priority = 7, description ="Check Account Balance of a Deleted Account")
     public void deletedAccountBalance() {
         //CHECK BALANCE
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.bal_enquiry_btn)).click();
@@ -158,8 +165,9 @@ public class CustomerAndAccounts {
 
     }
 
-    @Test(priority = 8, description ="Generate Custom Transaction Statement")
+    @Test(priority = 8, description ="Generate Custom Transaction Statement of a Deleted Account")
     public void deletedAccountCustomTransactionStatement() {
+
         //CHECK CUSTOM TRANSACTION
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.custom_stmt_btn)).click();
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.custom_acc_no_inp)).sendKeys(acc_no);
@@ -177,7 +185,7 @@ public class CustomerAndAccounts {
 
 
     @Test(priority = 9, description ="Deleting Customer and Checking Status", dataProvider = "customerIDs")
-    public void Deleting_Customer(String customID) {
+    public void deletingCustomer(String customID) {
 
         //DELETE CUSTOMER
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.delete_customer_btn)).click();
@@ -205,7 +213,7 @@ public class CustomerAndAccounts {
     }
 
     @Test(priority = 10, description ="Editing Deleted Customer Details and Checking Status")
-    public void Editing_Deleted_Customer_Details() {
+    public void editingDeletedCustomerDetails() {
 
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.customer_edit_btn)).click();
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.edit_customer_id_input)).sendKeys(customer_id);
@@ -223,7 +231,7 @@ public class CustomerAndAccounts {
         Object[] customerID = new Object[3];
         customerID[0] = "61232";
         customerID[1] = "102938";
-        customerID[2] = customerID;
+        customerID[2] = customer_id;
 
         return customerID;
     }

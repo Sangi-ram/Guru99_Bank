@@ -50,7 +50,7 @@ public class FundTransferAndDeposits {
 
         brw.driver.navigate().refresh();
         String fundTransferRefresh = brw.driver.findElement(By.xpath(FSelectors.payersAccount)).getText();
-        Assert.assertNull(fundTransferRefresh);
+        Assert.assertEquals(fundTransferRefresh,"");
 
     }
 
@@ -108,9 +108,9 @@ public class FundTransferAndDeposits {
 
 //        Utility.LoginFn(brw.driver);
         brw.driver.findElement(By.xpath(FSelectors.fundTransferBtn)).click();
-        brw.driver.findElement(By.xpath(FSelectors.payersAccount)).sendKeys(data.payersAccountNo);
+        brw.driver.findElement(By.xpath(FSelectors.payersAccount)).sendKeys(data.lowBalance);
         brw.driver.findElement(By.xpath(FSelectors.payeeAccount)).sendKeys(data.payeesAccountNo);
-        brw.driver.findElement(By.xpath(FSelectors.paymentAmount)).sendKeys(data.lowBalance);
+        brw.driver.findElement(By.xpath(FSelectors.paymentAmount)).sendKeys(data.fundTransferAmount);
         brw.driver.findElement(By.xpath(FSelectors.fundTransferDescription)).sendKeys(data.fundDescription);
         brw.driver.findElement(By.xpath(FSelectors.fundTransferSubmit)).click();
         Alert lowBalanceAccountAlert = brw.driver.switchTo().alert();
@@ -129,7 +129,7 @@ public class FundTransferAndDeposits {
         brw.driver.findElement(By.xpath(FSelectors.depositAmount)).sendKeys(data.fundTransferAmount);
         brw.driver.findElement(By.xpath(FSelectors.depositDescription)).sendKeys(data.fundDescription);
         brw.driver.findElement(By.xpath(FSelectors.depositSubmitBtn)).click();
-        Boolean deposit = brw.driver.findElement(By.xpath(FSelectors.depositAssert)).isDisplayed();
+        boolean deposit = brw.driver.findElement(By.xpath(FSelectors.depositAssert)).isDisplayed();
         Assert.assertTrue(deposit);
 
     }
@@ -139,9 +139,39 @@ public class FundTransferAndDeposits {
 
         brw.driver.navigate().refresh();
         String depositRefresh = brw.driver.findElement(By.xpath(FSelectors.depositAccountNumber)).getText();
-        Assert.assertNull(depositRefresh);
+        Assert.assertEquals(depositRefresh,"");
 
     }
+
+    @Test(priority = 19, description ="Verify Withdrawal")
+    public void verifyWithdraw() {
+
+//        Utility.LoginFn(brw.driver);
+        brw.driver.findElement(By.xpath(FSelectors.withdrawBtn)).click();
+        brw.driver.findElement(By.xpath(FSelectors.withdrawAccountNo)).sendKeys(data.payeesAccountNo);
+        brw.driver.findElement(By.xpath(FSelectors.withdrawAmount)).sendKeys(data.fundTransferAmount);
+        brw.driver.findElement(By.xpath(FSelectors.withdrawDescription)).sendKeys(data.fundDescription);
+        brw.driver.findElement(By.xpath(FSelectors.withdrawSubmitBtn)).click();
+        boolean withdraw = brw.driver.findElement(By.xpath(FSelectors.withdrawAssert)).isDisplayed();
+        Assert.assertTrue(withdraw);
+
+    }
+
+    @Test(priority = 19, description ="Verify Withdrawal from Account with Low Balance")
+    public void verifyLowBalanceWithdraw() {
+
+//        Utility.LoginFn(brw.driver);
+        brw.driver.findElement(By.xpath(FSelectors.withdrawBtn)).click();
+        brw.driver.findElement(By.xpath(FSelectors.withdrawAccountNo)).sendKeys(data.lowBalance);
+        brw.driver.findElement(By.xpath(FSelectors.withdrawAmount)).sendKeys(data.fundTransferAmount);
+        brw.driver.findElement(By.xpath(FSelectors.withdrawDescription)).sendKeys(data.fundDescription);
+        brw.driver.findElement(By.xpath(FSelectors.withdrawSubmitBtn)).click();
+        Alert lowBalanceWithdraw = brw.driver.switchTo().alert();
+        Assert.assertNotNull(lowBalanceWithdraw);
+        lowBalanceWithdraw.accept();
+
+    }
+
 
     @AfterClass
     public void closeBrowser(){
