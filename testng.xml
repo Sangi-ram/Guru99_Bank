@@ -3,9 +3,10 @@
 <suite name = "Guru99 Bank Webapp Testing">
     <test name = "Testing">
         <classes>
-            <class name = "Login" />
-            <class name = "CreationAndDeletion" />
-            <class name = "FundTransferAndDeposits" />
+            <class name = "Login"/>
+            <class name = "CreationAndDeletion"/>
+            <class name = "FundTransferAndDeposits"/>
+            <class name = "Accounts"/>
         </classes>
     </test>
 </suite>

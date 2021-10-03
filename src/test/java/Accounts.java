@@ -28,7 +28,7 @@ public class Accounts {
     @Test(priority = 20, description ="Verify Mini Statement")
     public void miniStatement() {
 
-//        Utility.LoginFn(brw.driver);
+        Utility.LoginFn(brw.driver);
         //CHECK MINI STATEMENT
         JavascriptExecutor executor = (JavascriptExecutor) brw.driver;
         WebElement element = brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.mini_stmt_btn));

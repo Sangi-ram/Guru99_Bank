@@ -1,4 +1,3 @@
-
 import common_lib.browser;
 import element.CustomerAndAccountsSelector;
 import input.data;
