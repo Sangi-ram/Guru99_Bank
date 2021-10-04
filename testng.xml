@@ -1,12 +1,27 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name = "Guru99 Bank Webapp Testing">
-    <test name = "Testing">
+<!--    <test name = "Manager">-->
+<!--        <classes>-->
+<!--            <class name = "Manager.Login"/>-->
+<!--            <class name = "Manager.CreationAndDeletion"/>-->
+<!--            <class name = "Manager.FundTransferAndDeposits"/>-->
+<!--            <class name = "Manager.Accounts"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+    <test name = "Customer">
         <classes>
-            <class name = "Login"/>
-            <class name = "CreationAndDeletion"/>
-            <class name = "FundTransferAndDeposits"/>
-            <class name = "Accounts"/>
+            <class name = "Customer.CustomerTransactions">
+<!--                <methods>-->
+<!--                    <include name="fundTransfer" />-->
+<!--                    <include name="refreshFundTransfer"/>-->
+<!--                </methods>-->
+            </class>
         </classes>
     </test>
+
 </suite>

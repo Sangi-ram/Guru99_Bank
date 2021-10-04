@@ -1,3 +1,5 @@
+package Manager;
+
 import Utilities.Utility;
 import common_lib.browser;
 import element.CustomerAndAccountsSelector;
@@ -25,14 +27,13 @@ public class CreationAndDeletion {
 
         //BrowserSetup
         brw.chromeBrowser(data.baseUrl);
+        Utility.LoginFn(brw.driver, "mngr354021", "udYbEna");
+
 
     }
 
     @Test(priority = 2, description ="Add new Customer")
     public void Add_New_Customer(){
-        //LOGIN
-        Utility.LoginFn(brw.driver);
-
         //Add_New_Customer
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.new_cstmr_buttn)).click();
         Assert.assertEquals(brw.driver.getTitle(),"Guru99 Bank New Customer Entry Page");
@@ -49,13 +50,14 @@ public class CreationAndDeletion {
         try {
             brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.icust_submit)).click();
             //ASSERT
+            Assert.assertTrue(brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.ocust_id)).isDisplayed());
+
         }
         catch (UnhandledAlertException eAlert){
-
+            brw.driver.switchTo().alert().accept();
             Add_New_Customer();
 
         }
-        Assert.assertTrue(brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.ocust_id)).isDisplayed());
         String new_customer_id = brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.ocust_id)).getText();
         System.out.println("New Customer ID :: " + new_customer_id);
         Utility.screenShot(brw.driver, "New Customer " +new_customer_id);
@@ -89,10 +91,6 @@ public class CreationAndDeletion {
 
     @Test(priority =4, description ="Add new Account Existing Customer")
     public void AddNewAccountForExistingCustomer() {
-        //LOGIN
-//        Utility.LoginFn(brw.driver);
-
-
 
 //            ADD NEW ACCOUNT
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.add_account_btn)).click();
@@ -114,9 +112,6 @@ public class CreationAndDeletion {
 
     @Test(priority = 5, description ="Delete Existing Account and Observe The Effect")
     public void deleteExistingAccount() {
-
-        //LOGIN
-//        Utility.LoginFn(brw.driver);
 
         //DELETE ACCOUNT
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.acc_delete_btn)).click();

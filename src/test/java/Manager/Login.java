@@ -1,3 +1,5 @@
+package Manager;
+
 import common_lib.browser;
 import element.CustomerAndAccountsSelector;
 import input.data;
@@ -23,7 +25,7 @@ public class Login {
 
     }
 
-    @Test(priority = 1, dataProvider = "Creds_Data", description = "Check Login functionality")
+    @Test(priority = 1, dataProvider = "Creds_Data", description = "Check Manager.Login functionality")
     public void login(String uid, String pass){
 
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.uid)).sendKeys(uid);
@@ -32,13 +34,13 @@ public class Login {
 
         try {
             Alert alert = brw.driver.switchTo().alert();
-            System.out.println("Login Error");
+            System.out.println("Manager.Login Error");
             String expected_alert = "User or Password is not valid";
             Assert.assertEquals(alert.getText(), expected_alert);
             alert.accept();
         }
         catch(Exception ex){
-            System.out.println("Login Successful");
+            System.out.println("Manager.Login Successful");
             String actual_uid = brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.manager_id)).getText();
             String expected_uid = "Manger Id : mngr354021";
             Assert.assertEquals(expected_uid,actual_uid);

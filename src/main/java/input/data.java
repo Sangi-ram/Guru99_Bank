@@ -27,7 +27,7 @@ public class data {
     public String newEMail = "Ndbdeheu@oajf.com";
 
     //CUSTOM STATEMENT
-    public String start_date = "0105\t2020";
+    public String start_date = "0105\t2010";
     public String end_date = "0105\t2080";
     public String min_transaction = "10";
     public String noOfTransactions = "5000";
@@ -35,10 +35,13 @@ public class data {
     //FUND TRANSFER
     public String payersAccountNo = "98291";
     public String payeesAccountNo = "98292";
-    public String fundTransferAmount = "100";
+    public String fundTransferAmount = "50";
     public String fundDescription = "This is a fund Description";
     public String wrongAccount = "108374838";
     public String lowBalance = "98338";
+
+    //CUSTOMER TRANSACTIONS
+    public String accountNO = "98964";
 
 
 }

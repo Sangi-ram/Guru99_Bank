@@ -1,3 +1,5 @@
+package Manager;
+
 import Utilities.Utility;
 import common_lib.browser;
 import element.CustomerAndAccountsSelector;
@@ -22,13 +24,13 @@ public class Accounts {
 
         //BrowserSetup
         brw.chromeBrowser(data.baseUrl);
+        Utility.LoginFn(brw.driver, "mngr354021", "udYbEna");
 
     }
 
     @Test(priority = 20, description ="Verify Mini Statement")
     public void miniStatement() {
 
-        Utility.LoginFn(brw.driver);
         //CHECK MINI STATEMENT
         JavascriptExecutor executor = (JavascriptExecutor) brw.driver;
         WebElement element = brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.mini_stmt_btn));
@@ -44,7 +46,6 @@ public class Accounts {
     @Test(priority = 21, description ="Check Account Balance")
     public void accountBalance() {
 
-//        Utility.LoginFn(brw.driver);
         //CHECK BALANCE
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.bal_enquiry_btn)).click();
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.bal_acc_no_inp)).sendKeys(data.payersAccountNo);
@@ -57,7 +58,6 @@ public class Accounts {
     @Test(priority = 22, description ="Generate Custom Transaction Statement")
     public void customTransactionStatement() {
 
-//        Utility.LoginFn(brw.driver);
         //CHECK CUSTOM TRANSACTION
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.custom_stmt_btn)).click();
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.custom_acc_no_inp)).sendKeys(data.payersAccountNo);
@@ -73,8 +73,6 @@ public class Accounts {
 
     @Test(priority = 23, description ="Generate Custom Transaction Statement where From Date is Greater Than To Date")
     public void customTransactionStatementLateFromDate() {
-
-//        Utility.LoginFn(brw.driver);
         //CHECK CUSTOM TRANSACTION
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.custom_stmt_btn)).click();
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.custom_acc_no_inp)).sendKeys(data.payersAccountNo);
@@ -92,8 +90,6 @@ public class Accounts {
 
     @Test(priority = 24, description ="Logout")
     public void logout() {
-//
-//        Utility.LoginFn(brw.driver);
 
         brw.driver.findElement(By.xpath(CustomerAndAccountsSelector.logout_btn)).click();
         brw.driver.switchTo().alert().accept();

@@ -1,3 +1,5 @@
+package Manager;
+
 import Utilities.Utility;
 import common_lib.browser;
 import element.CustomerAndAccountsSelector;
@@ -27,12 +29,12 @@ public class FundTransferAndDeposits {
 
         //BrowserSetup
         brw.chromeBrowser(data.baseUrl);
+        Utility.LoginFn(brw.driver, "mngr354021", "udYbEna");
 
     }
 
     @Test(priority = 11, description ="Verify Fund Transfer")
     public void fundTransfer() {
-        Utility.LoginFn(brw.driver);
 
         brw.driver.findElement(By.xpath(FSelectors.fundTransferBtn)).click();
         brw.driver.findElement(By.xpath(FSelectors.payersAccount)).sendKeys(data.payersAccountNo);
@@ -56,7 +58,6 @@ public class FundTransferAndDeposits {
 
     @Test(priority = 13, description ="Verify Fund Transfer Details On Customised Statements")
     public void verifyCustomStatement(){
-//        Utility.LoginFn(brw.driver);
 
         brw.driver.findElement(By.xpath(CSelectors.custom_stmt_btn)).click();
         brw.driver.findElement(By.xpath(CSelectors.custom_acc_no_inp)).sendKeys(data.payeesAccountNo);
@@ -72,7 +73,6 @@ public class FundTransferAndDeposits {
     @Test(priority = 14, description ="Verify Fund Transfer While Transferring Fund to Wrong Account")
     public void wrongAccount(){
 
-//        Utility.LoginFn(brw.driver);
         brw.driver.findElement(By.xpath(FSelectors.fundTransferBtn)).click();
         brw.driver.findElement(By.xpath(FSelectors.payersAccount)).sendKeys(data.payersAccountNo);
         brw.driver.findElement(By.xpath(FSelectors.payeeAccount)).sendKeys(data.wrongAccount);
@@ -89,7 +89,6 @@ public class FundTransferAndDeposits {
     @Test(priority = 15, description ="Verify Fund Transfer While Transferring Fund to Same Account")
     public void sameAccount(){
 
-//        Utility.LoginFn(brw.driver);
         brw.driver.findElement(By.xpath(FSelectors.fundTransferBtn)).click();
         brw.driver.findElement(By.xpath(FSelectors.payersAccount)).sendKeys(data.payersAccountNo);
         brw.driver.findElement(By.xpath(FSelectors.payeeAccount)).sendKeys(data.payersAccountNo);
@@ -106,7 +105,6 @@ public class FundTransferAndDeposits {
     @Test(priority = 16, description ="Verify Fund Transfer While Transferring Fund to Account with low balance")
     public void lowBalanceAccount(){
 
-//        Utility.LoginFn(brw.driver);
         brw.driver.findElement(By.xpath(FSelectors.fundTransferBtn)).click();
         brw.driver.findElement(By.xpath(FSelectors.payersAccount)).sendKeys(data.lowBalance);
         brw.driver.findElement(By.xpath(FSelectors.payeeAccount)).sendKeys(data.payeesAccountNo);
@@ -123,7 +121,6 @@ public class FundTransferAndDeposits {
     @Test(priority = 17, description ="Verify Deposit Functionality")
     public void deposit(){
 
-//        Utility.LoginFn(brw.driver);
         brw.driver.findElement(By.xpath(FSelectors.depositBtn)).click();
         brw.driver.findElement(By.xpath(FSelectors.depositAccountNumber)).sendKeys(data.payersAccountNo);
         brw.driver.findElement(By.xpath(FSelectors.depositAmount)).sendKeys(data.fundTransferAmount);
@@ -146,7 +143,6 @@ public class FundTransferAndDeposits {
     @Test(priority = 19, description ="Verify Withdrawal")
     public void verifyWithdraw() {
 
-//        Utility.LoginFn(brw.driver);
         brw.driver.findElement(By.xpath(FSelectors.withdrawBtn)).click();
         brw.driver.findElement(By.xpath(FSelectors.withdrawAccountNo)).sendKeys(data.payeesAccountNo);
         brw.driver.findElement(By.xpath(FSelectors.withdrawAmount)).sendKeys(data.fundTransferAmount);
@@ -160,7 +156,6 @@ public class FundTransferAndDeposits {
     @Test(priority = 19, description ="Verify Withdrawal from Account with Low Balance")
     public void verifyLowBalanceWithdraw() {
 
-//        Utility.LoginFn(brw.driver);
         brw.driver.findElement(By.xpath(FSelectors.withdrawBtn)).click();
         brw.driver.findElement(By.xpath(FSelectors.withdrawAccountNo)).sendKeys(data.lowBalance);
         brw.driver.findElement(By.xpath(FSelectors.withdrawAmount)).sendKeys(data.fundTransferAmount);

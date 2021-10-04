@@ -1,9 +1,6 @@
 package Utilities;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.io.FileHandler;
 
 import java.io.File;
@@ -27,11 +24,24 @@ public class Utility {
 
     }
 
-    public static void LoginFn(WebDriver driver) {
-        driver.findElement(By.xpath("/html/body/form/table/tbody/tr[1]/td[2]/input")).sendKeys("mngr354021");
-        driver.findElement(By.xpath("/html/body/form/table/tbody/tr[2]/td[2]/input")).sendKeys("udYbEna");
+    public static void LoginFn(WebDriver driver, String uname, String pwd) {
+        driver.findElement(By.xpath("/html/body/form/table/tbody/tr[1]/td[2]/input")).sendKeys(uname);
+        driver.findElement(By.xpath("/html/body/form/table/tbody/tr[2]/td[2]/input")).sendKeys(pwd);
         driver.findElement(By.xpath("/html/body/form/table/tbody/tr[3]/td[2]/input[1]")).click();
 
     }
+
+    public static void click(WebDriver driver, String path) {
+
+        driver.findElement(By.xpath(path)).click();
+
+    }
+
+    public static void sendKeys(WebDriver driver, String path, String data) {
+
+        driver.findElement(By.xpath(path)).sendKeys(data);
+
+    }
+
 }
 
